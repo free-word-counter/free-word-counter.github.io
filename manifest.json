@@ -9,9 +9,9 @@
   "description": "Free online word counter — count words, characters, sentences and paragraphs instantly as you type. Live reading time and keyword density, no sign-up, and your text never leaves your browser.",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/logo.png",
+      "sizes": "96x96",
+      "type": "image/png",
       "purpose": "any"
     }
   ]

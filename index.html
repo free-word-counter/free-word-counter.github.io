@@ -28,7 +28,8 @@
   <meta name="twitter:image" content="https://free-word-counter.github.io/og.svg" />
 
   <link rel="manifest" href="/manifest.json" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/logo.png" type="image/png" sizes="any" />
+  <link rel="apple-touch-icon" href="/logo.png" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -176,7 +177,7 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
 <body>
 <main class="tool">
   <header class="wc-top">
-    <h1 class="wc-title">Free Word Counter</h1>
+    <img src="/logo.png" class="wc-logo" width="30" height="30" alt="" /><h1 class="wc-title">Free Word Counter</h1>
     <span class="wc-sub">Counts update as you type — nothing leaves your browser.</span>
   </header>
 
@@ -285,7 +286,8 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
   [hidden]{display:none!important}
   .tool{max-width:1180px;margin:0 auto;padding:40px 24px;font-family:Arial,Helvetica,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1E2330}
 
-  .wc-top{display:flex;align-items:baseline;gap:12px;margin-bottom:22px;padding-left:2px;flex-wrap:wrap}
+  .wc-top{display:flex;align-items:center;gap:10px;margin-bottom:22px;padding-left:2px;flex-wrap:wrap}
+  .wc-logo{width:30px;height:30px;border-radius:7px;flex:none}
   .wc-title{font-size:22px;font-weight:700;color:#1E2330;letter-spacing:-.01em;margin:0}
   .wc-sub{font-size:13.5px;color:#8A93A6}
 
