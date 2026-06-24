@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content" />
+  <title>Free Word Counter — Count Words &amp; Characters Online</title>
+  <meta name="description" content="Free online word counter — count words, characters, sentences and paragraphs instantly as you type. Live reading time and keyword density, no sign-up, and your text never leaves your browser." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#1f2328" />
+  <link rel="canonical" href="https://free-word-counter.github.io/" />
+  <link rel="alternate" hreflang="en" href="https://free-word-counter.github.io/" />
+  <link rel="alternate" hreflang="es" href="https://free-word-counter.github.io/" />
+  <link rel="alternate" hreflang="fr" href="https://free-word-counter.github.io/" />
+  <link rel="alternate" hreflang="de" href="https://free-word-counter.github.io/" />
+  <link rel="alternate" hreflang="pt" href="https://free-word-counter.github.io/" />
+  <link rel="alternate" hreflang="x-default" href="https://free-word-counter.github.io/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Free Word Counter" />
+  <meta property="og:title" content="Free Word Counter — Count Words &amp; Characters Online" />
+  <meta property="og:description" content="Free online word counter — count words, characters, sentences and paragraphs instantly as you type. Live reading time and keyword density, no sign-up, and your text never leaves your browser." />
+  <meta property="og:url" content="https://free-word-counter.github.io/" />
+  <meta property="og:image" content="https://free-word-counter.github.io/og.svg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free Word Counter — Count Words &amp; Characters Online" />
+  <meta name="twitter:description" content="Free online word counter — count words, characters, sentences and paragraphs instantly as you type. Live reading time and keyword density, no sign-up, and your text never leaves your browser." />
+  <meta name="twitter:image" content="https://free-word-counter.github.io/og.svg" />
+
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="icon" href="/logo.png" sizes="any" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": [
+    "SoftwareApplication",
+    "WebApplication"
+  ],
+  "name": "Free Word Counter",
+  "url": "https://free-word-counter.github.io/",
+  "description": "Free online word counter — count words, characters, sentences and paragraphs instantly as you type. Live reading time and keyword density, no sign-up, and your text never leaves your browser.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this word counter free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — completely free, with no sign-up, no ads in your text, and no limit on how much you can paste or type."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does it count words?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It counts the moment you type or paste, splitting your text on spaces and line breaks. Characters, sentences, and paragraphs update live too."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my text private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All counting happens inside your browser — your text is never uploaded to a server and never leaves your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are reading and speaking time calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reading time assumes about 200 words per minute and speaking time about 130 words per minute — typical averages for adults."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work on my phone and offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It works on mobile and desktop, and once the page has loaded it keeps working without an internet connection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many words are on one page?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A typical double-spaced page holds about 275 words, so 1,000 words is roughly 3.6 pages. The exact number depends on your font, size, and spacing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the character limit for a post on X (Twitter)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard X post allows 280 characters. The Social tab also checks Threads (500), Bluesky (300), Instagram captions (2,200), and LinkedIn (3,000)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should a meta description be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aim for about 150–160 characters. Google truncates longer descriptions in search results, so paste your draft here to keep it within range."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should an SEO title tag be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Around 50–60 characters is the sweet spot before Google cuts the title off in search results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it count words the same way as Microsoft Word?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Very closely — both count runs of non-space characters as words. Small differences can appear with hyphenated terms, numbers, and symbols."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to use Free Word Counter",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "text": "Type or paste your text — or upload a .txt, .md or .docx file, or paste a link to pull its text — and counting starts instantly."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "text": "Stay in Writing mode for words, characters, sentences, paragraphs, reading time and pages; switch to Social for per-platform character limits."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "text": "Read the big live count and the full stats matrix in the highlighted panel above your text."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "text": "Set a target word count to track your progress with a live goal bar as you write."
+    }
+  ]
+}
+  </script>
+  <style>
+*{box-sizing:border-box}
+:root{color-scheme:light dark;--bg:#ffffff;--fg:#16181d;--muted:#5b6470;--line:#e3e6ea;--card:#fbfcfd;--btn:#f4f6f8;--btnh:#e9edf1;--accent:#1a7f37}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e6e8eb;--muted:#9aa3ad;--line:#262b33;--card:#151820;--btn:#1b1f27;--btnh:#232833;--accent:#3fb950}}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+@media print{.toolbar,.about,.foot,.status{display:none!important}#pad{border:none!important}}</style>
+</head>
+<body>
+<main class="tool">
+  <header class="wc-top">
+    <h1 class="wc-title">Free Word Counter</h1>
+    <span class="wc-sub">Counts update as you type — nothing leaves your browser.</span>
+  </header>
+
+  <div class="wc-grid">
+    <section class="wc-main">
+      <div class="wc-editor">
+        <div class="wc-metrics" id="metrics" aria-label="Live counts" hidden>
+          <div class="wc-metric"><span class="wc-mval" id="mWords">0</span><span class="wc-mlabel">words,</span></div>
+          <div class="wc-metric"><span class="wc-mval" id="mChars">0</span><span class="wc-mlabel">characters</span></div>
+        </div>
+        <div class="wc-tawrap">
+          <textarea id="pad" class="pad" aria-label="Your text" spellcheck="false" placeholder=""></textarea>
+          <div class="wc-empty" id="emptyState">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+            Type or paste your text to see live counts
+          </div>
+        </div>
+        <div class="wc-foot">
+          <div class="wc-tools">
+            <button type="button" id="pasteBtn" class="wc-ghost"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path></svg>Paste</button>
+            <button type="button" id="uploadBtn" class="wc-ghost"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>Upload</button>
+            <input type="file" id="fileInput" accept=".txt,.md,.markdown,.rtf,.docx,text/plain" hidden aria-label="Upload a text file" />
+          </div>
+          <div class="wc-foot-a" id="footActions" hidden>
+            <button type="button" id="copyBtn" class="wc-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span id="copyLabel">Copy text</span></button>
+            <button type="button" id="clearBtn" class="wc-iconbtn" title="Clear all"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>Clear all</button>
+          </div>
+        </div>
+      </div>
+
+      <form class="wc-urlgroup" id="urlForm">
+        <label class="wc-urllabel" for="urlInput">Count from URL</label>
+        <div class="wc-urlbox" id="urlBox">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7480" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <input id="urlInput" placeholder="https://example.com/article" spellcheck="false" />
+          <span class="wc-enter">↵ ENTER</span>
+        </div>
+        <div class="wc-urlmsg" id="urlMsg" hidden></div>
+      </form>
+    </section>
+
+    <aside class="wc-side">
+      <div class="wc-card">
+        <div class="wc-cardhead">
+          <div class="wc-ti"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E2330" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><h2>Statistics</h2></div>
+        </div>
+        <p class="wc-statsempty" id="statsEmpty">Start typing to see stats.</p>
+        <div id="statsBody" hidden>
+          <div class="wc-statsec">
+            <div class="wc-seclabel">Counts</div>
+            <div id="countsList"></div>
+          </div>
+          <div class="wc-statsec last">
+            <div class="wc-seclabel">Readability</div>
+            <div id="readingList"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wc-card">
+        <div class="wc-cardhead">
+          <div class="wc-ti"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E2330" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg><h2>Check social platform limits</h2></div>
+          <button type="button" id="socialToggle" class="wc-toggle" role="switch" aria-checked="false" aria-label="Toggle social platform limits"><span class="wc-knob"></span></button>
+        </div>
+        <p class="wc-socialhint" id="socialHint">Turn on to check your text against X, Threads, Bluesky, Instagram & LinkedIn limits.</p>
+        <div class="wc-social" id="socialList" hidden></div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<section class="about">
+  <h2>What is a word counter?</h2>
+  <p>Free Word Counter is a fast, private tool that counts the words and characters in your text the moment you type or paste it. Alongside the live word and character counts it shows sentences, paragraphs, and reading and speaking time — handy for essays, articles, social posts, and SEO copy. Everything runs entirely in your browser: no sign-up, no uploads, and your text never leaves your device.</p>
+  <h2>How to use Free Word Counter</h2>
+  <ol class="how"><li>Type or paste your text — or upload a .txt, .md or .docx file, or paste a link to pull its text — and counting starts instantly.</li><li>Stay in Writing mode for words, characters, sentences, paragraphs, reading time and pages; switch to Social for per-platform character limits.</li><li>Read the big live count and the full stats matrix in the highlighted panel above your text.</li><li>Set a target word count to track your progress with a live goal bar as you write.</li></ol>
+  <h2>Character counter</h2>
+  <p>Need a character count rather than words? Every mode shows characters with and without spaces as you type, and the Social tab works as a live character counter that checks your text against real platform limits — handy for bios, headlines, and anywhere a strict character cap applies.</p>
+  <h2>Essay word counter</h2>
+  <p>Writing an essay or assignment to a word limit? Set a target word count and a progress bar shows how close you are, while estimated pages and reading time help you reach a 500-, 1,000-, or 2,500-word requirement without opening a full word processor.</p>
+  <h2>Meta description &amp; SEO title length checker</h2>
+  <p>Search snippets get cut off past a certain length: aim for roughly 50–60 characters for a title tag and about 150–160 for a meta description. Paste your draft to see the exact character count and trim it so Google shows it in full.</p>
+  <h2>Social media character counter</h2>
+  <p>Captions and posts each have their own cap. In the Social tab, paste your text to see your character count against X (280), Threads (500), Bluesky (300), Instagram (2,200), and LinkedIn (3,000) at a glance — the bar turns red the moment you go over.</p>
+  <h2>Who uses Free Word Counter?</h2>
+  <ul class="cases"><li><strong>Students</strong> — hit essay and assignment word limits, and estimate pages and reading time.</li><li><strong>Bloggers &amp; writers</strong> — check article length, reading time, and page count at a glance.</li><li><strong>SEO writers</strong> — size up title tags and meta descriptions and gauge content length against search intent.</li><li><strong>Social media managers</strong> — keep captions within each platform’s character limit before posting.</li><li><strong>Translators &amp; editors</strong> — track length between source and target text and count words for quoting and billing.</li></ul>
+  <h2>Frequently asked questions</h2>
+  <div class="faqs">
+      <div class="faq-item"><h3>Is this word counter free?</h3><p>Yes — completely free, with no sign-up, no ads in your text, and no limit on how much you can paste or type.</p></div>
+      <div class="faq-item"><h3>How does it count words?</h3><p>It counts the moment you type or paste, splitting your text on spaces and line breaks. Characters, sentences, and paragraphs update live too.</p></div>
+      <div class="faq-item"><h3>Is my text private?</h3><p>Yes. All counting happens inside your browser — your text is never uploaded to a server and never leaves your device.</p></div>
+      <div class="faq-item"><h3>How are reading and speaking time calculated?</h3><p>Reading time assumes about 200 words per minute and speaking time about 130 words per minute — typical averages for adults.</p></div>
+      <div class="faq-item"><h3>Does it work on my phone and offline?</h3><p>Yes. It works on mobile and desktop, and once the page has loaded it keeps working without an internet connection.</p></div>
+      <div class="faq-item"><h3>How many words are on one page?</h3><p>A typical double-spaced page holds about 275 words, so 1,000 words is roughly 3.6 pages. The exact number depends on your font, size, and spacing.</p></div>
+      <div class="faq-item"><h3>What is the character limit for a post on X (Twitter)?</h3><p>A standard X post allows 280 characters. The Social tab also checks Threads (500), Bluesky (300), Instagram captions (2,200), and LinkedIn (3,000).</p></div>
+      <div class="faq-item"><h3>How long should a meta description be?</h3><p>Aim for about 150–160 characters. Google truncates longer descriptions in search results, so paste your draft here to keep it within range.</p></div>
+      <div class="faq-item"><h3>How long should an SEO title tag be?</h3><p>Around 50–60 characters is the sweet spot before Google cuts the title off in search results.</p></div>
+      <div class="faq-item"><h3>Does it count words the same way as Microsoft Word?</h3><p>Very closely — both count runs of non-space characters as words. Small differences can appear with hyphenated terms, numbers, and symbols.</p></div>
+  </div>
+</section>
+<footer class="foot">100% free · works offline · your text never leaves your browser</footer>
+
+<style>
+  :root{color-scheme:light;--ink:#1E2330;--muted:#6A7385}
+  html,body{background:#F4F6FA;color:#1E2330}
+  [hidden]{display:none!important}
+  .tool{max-width:1180px;margin:0 auto;padding:40px 24px;font-family:Arial,Helvetica,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1E2330}
+
+  .wc-top{display:flex;align-items:baseline;gap:12px;margin-bottom:22px;padding-left:2px;flex-wrap:wrap}
+  .wc-title{font-size:22px;font-weight:700;color:#1E2330;letter-spacing:-.01em;margin:0}
+  .wc-sub{font-size:13.5px;color:#8A93A6}
+
+  .wc-grid{display:flex;gap:20px;align-items:stretch;flex-wrap:wrap}
+  .wc-main{flex:1 1 560px;min-width:320px;display:flex;flex-direction:column}
+
+  .wc-editor{background:#fff;border:1px solid #E5E8F0;border-radius:16px;box-shadow:0 1px 2px rgba(20,30,60,.04);display:flex;flex-direction:column;min-height:420px;overflow:hidden}
+  .wc-metrics{display:flex;align-items:baseline;gap:10px;padding:16px 18px 0;flex-wrap:wrap}
+  .wc-metric{display:flex;align-items:baseline;gap:6px}
+  .wc-mval,.wc-mlabel{font-size:26px;font-weight:800;color:#1B45C4;line-height:1;letter-spacing:-.015em}
+  .wc-mval{font-variant-numeric:tabular-nums}
+  .wc-tawrap{position:relative;flex:1;display:flex;margin:14px 16px;border:1.5px solid #D1D5DB;border-radius:12px;background:#fff;transition:border-color .15s ease,box-shadow .15s ease}
+  .wc-tawrap:focus-within{border-color:#2563EB;box-shadow:0 0 0 3px rgba(37,99,235,.13)}
+  .pad{flex:1;width:100%;resize:none;border:none;outline:none;background:transparent;padding:16px 18px;font-size:15px;line-height:1.7;color:#232a39;min-height:280px;font-family:inherit;border-radius:12px}
+  .pad::placeholder{color:#AAB2C0}
+  .pad::selection{background:#DCE7FF}
+  .wc-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;padding:24px;cursor:text;text-align:center;font-size:15px;font-weight:600;color:#9AA3B2}
+  .wc-empty svg{flex:none;stroke:#B6C4E4}
+
+  .wc-foot{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-top:1px solid #EEF0F6;gap:8px;flex-wrap:wrap}
+  .wc-tools{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+  .wc-foot-a{display:flex;align-items:center;gap:8px}
+  .wc-ghost{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;background:transparent;border:none;border-radius:8px;cursor:pointer;font-size:13.5px;font-weight:600;color:#5A6373;font-family:inherit;transition:background .15s ease}
+  .wc-ghost:hover{background:#F1F2F6}
+  .wc-primary{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;background:#2563EB;border:none;border-radius:8px;cursor:pointer;color:#fff;font-size:13px;font-weight:700;font-family:inherit;transition:background .15s ease,transform .12s ease}
+  .wc-primary:hover{background:#1D4FD4}
+  .wc-primary:active{transform:translateY(1px)}
+  .wc-iconbtn{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border:none;background:transparent;border-radius:8px;cursor:pointer;color:#B2384A;font-size:13px;font-weight:600;font-family:inherit;transition:background .15s ease,color .15s ease}
+  .wc-iconbtn:hover{background:#F1F2F6}
+
+  .wc-urlgroup{display:flex;flex-direction:column;gap:8px;margin-top:16px;padding-left:2px}
+  .wc-urllabel{font-size:12.5px;font-weight:700;letter-spacing:.02em;color:#5A6373}
+  .wc-urlbox{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #DFE3EC;border-radius:10px;padding:0 10px 0 14px;box-shadow:0 1px 2px rgba(20,30,60,.05)}
+  .wc-urlbox.err{border-color:#E7B4AE}
+  .wc-urlbox input{flex:1;min-width:0;border:none;outline:none;background:transparent;padding:12px 0;font-size:14px;color:#232a39;font-family:inherit}
+  .wc-enter{flex:none;font-size:10.5px;font-weight:700;letter-spacing:.03em;color:#8A93A6;background:#F1F3F7;border:1px solid #E2E6EE;border-radius:5px;padding:3px 7px}
+  .wc-urlmsg{font-size:12.5px;padding-left:4px}
+
+  .wc-side{flex:0 0 320px;min-width:280px;display:flex;flex-direction:column;gap:16px}
+  .wc-card{background:#fff;border:1px solid #E5E8F0;border-radius:16px;box-shadow:0 1px 2px rgba(20,30,60,.04);overflow:hidden}
+  .wc-cardhead{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:16px 20px;border-bottom:1px solid #EEF0F6}
+  .wc-cardhead h2{font-size:15.5px;font-weight:700;color:#1E2330;margin:0}
+  .wc-ti{display:flex;align-items:center;gap:9px;min-width:0}
+  .wc-statsempty{margin:0;padding:20px;font-size:13.5px;color:#9AA3B2}
+  .wc-statsec{padding:16px 20px 8px}
+  .wc-statsec.last{padding:2px 20px 18px}
+  .wc-seclabel{font-size:11.5px;font-weight:700;letter-spacing:.07em;color:#9AA3B2;text-transform:uppercase;padding-bottom:8px}
+  .wc-statsec.last .wc-seclabel{padding:10px 0 8px}
+  .wc-row{display:flex;align-items:baseline;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F3F8}
+  .wc-row .rl{font-size:14px;color:#6A7385}
+  .wc-row .rv{font-size:15px;font-weight:600;color:#2A3142;font-variant-numeric:tabular-nums}
+
+  .wc-toggle{position:relative;width:40px;height:23px;flex:none;border:none;border-radius:999px;cursor:pointer;background:#CBD2DD;transition:background .18s ease}
+  .wc-toggle[aria-checked="true"]{background:#2563EB}
+  .wc-knob{position:absolute;top:2.5px;left:2.5px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.28);transition:left .18s ease}
+  .wc-toggle[aria-checked="true"] .wc-knob{left:19.5px}
+  .wc-subt{font-weight:500;color:#98A1AD}
+  .wc-socialhint{margin:0;padding:16px 20px 18px;font-size:13px;line-height:1.55;color:#9AA3B2}
+  .wc-social{padding:14px 20px 18px;display:flex;flex-direction:column;gap:15px}
+  .wc-srow .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+  .wc-srow .nm{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#2A3142}
+  .wc-srow .lim{font-size:11.5px;font-weight:600;color:#AAB2C0;font-variant-numeric:tabular-nums}
+  .wc-srow .rem{font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}
+  .wc-track{height:5px;background:#EFF1F6;border-radius:5px;overflow:hidden}
+  .wc-fill{height:100%;border-radius:5px;transition:width .3s ease}
+
+  @media (max-width:680px){
+    .tool{padding:22px 14px}
+    .wc-main,.wc-side{flex:1 1 100%;min-width:0}
+    .wc-mval,.wc-mlabel{font-size:24px}
+  }
+
+  .about{max-width:800px;margin:24px auto 0;padding:8px 16px 0;color:var(--muted);line-height:1.7;font-size:15px;font-family:Arial,Helvetica,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .about h2{color:var(--ink);font-size:19px;font-weight:600;margin:24px 0 8px}
+  .about p{margin:0 0 10px}
+  .how{margin:8px 0 0;padding-left:22px}
+  .how li{margin:7px 0}
+  .faqs{display:flex;flex-direction:column}
+  .faq-item h3{color:var(--ink);font-size:16px;font-weight:600;margin:16px 0 5px}
+  .faq-item p{margin:0}
+  .cases{margin:8px 0 0;padding-left:22px}
+  .cases li{margin:7px 0}
+  .cases strong{color:var(--ink)}
+  .foot{max-width:800px;margin:6px auto 0;padding:18px 16px 28px;color:var(--muted);font-size:12.5px;text-align:center;font-family:Arial,Helvetica,-apple-system,"Segoe UI",Roboto,sans-serif}
+  @media print{.wc-urlgroup,.wc-foot,.foot,.about{display:none!important}.wc-editor{border:none;box-shadow:none}}
+</style>
+<script>
+(function () {
+  var WPM = 200, SPEAK_WPM = 130, MAXCHARS = 10000, EXCLUDE_NUMBERS = false;
+  var LS = { text: 'wordcounter.text', social: 'wordcounter.social' };
+  var PLATFORMS = [
+    { name: 'X (Twitter)', color: '#0F1419', limit: 280, path: 'M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z' },
+    { name: 'Threads', color: '#000000', limit: 500, path: 'M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.291 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.781 3.631 2.695 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.358-.218-3.255-.801-1.06-.69-1.68-1.745-1.746-2.97-.13-2.42 1.823-4.176 4.97-4.367.882-.054 1.74-.012 2.526.121-.117-.7-.36-1.255-.728-1.656-.474-.516-1.205-.78-2.176-.78l-.07-.001c-.85 0-2.005.234-2.74 1.328l-1.687-1.135c.985-1.466 2.7-2.236 4.426-2.236h.082c2.93.022 4.677 1.853 4.91 5.046l.006.027.001.057c.71.301 1.327.682 1.84 1.139 1.21 1.078 1.876 2.59 1.876 4.255 0 .77-.122 1.504-.36 2.176z' },
+    { name: 'Bluesky', color: '#1185FE', limit: 300, path: 'M5.769 4.477C8.115 6.24 10.638 9.815 11.565 11.733c.927-1.918 3.45-5.493 5.796-7.256C19.052 3.205 22 2.046 22 5.41c0 .67-.385 5.633-.611 6.438-.787 2.8-3.642 3.514-6.182 3.082 4.44.756 5.57 3.26 3.13 5.764-4.634 4.757-6.66-1.194-7.177-2.72-.095-.279-.139-.41-.16-.299-.021-.111-.065.02-.16.299-.518 1.526-2.544 7.477-7.178 2.72-2.44-2.504-1.31-5.008 3.13-5.764-2.54.432-5.395-.282-6.182-3.082C.385 11.043 0 6.08 0 5.41 0 2.046 2.948 3.205 4.439 4.477z' },
+    { name: 'Instagram', color: '#E4405F', limit: 2200, path: 'M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z' },
+    { name: 'LinkedIn', color: '#0A66C2', limit: 3000, path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' }
+  ];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var pad = $('pad');
+  var fileInput = $('fileInput');
+  var state = { socialOn: false, focused: false };
+
+  function lsGet(k) { try { return window.localStorage.getItem(LS[k]); } catch (e) { return null; } }
+  function lsSet(k, v) { try { if (v == null) window.localStorage.removeItem(LS[k]); else window.localStorage.setItem(LS[k], String(v)); } catch (e) {} }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function nf(n) { return Number(n).toLocaleString('en-US'); }
+  function fmtTime(mins) {
+    if (mins <= 0) return '0 sec';
+    var totalSec = Math.round(mins * 60);
+    if (totalSec < 60) return totalSec + ' sec';
+    var m = Math.floor(totalSec / 60), s = totalSec % 60;
+    return s === 0 ? m + ' min' : m + ' min ' + s + ' sec';
+  }
+
+  // ---- file import (txt/md/rtf + .docx unzip, a superset of the design) ----
+  function decodeEntities(s) {
+    return s.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+      .replace(/&#x?[0-9a-f]+;/gi, function (m) { try { var hex = /x/i.test(m); var code = parseInt(m.replace(/[^0-9a-f]/gi, ''), hex ? 16 : 10); return String.fromCharCode(code); } catch (e) { return ''; } });
+  }
+  function htmlToText(html) {
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    doc.querySelectorAll('script, style, noscript, svg, head').forEach(function (n) { n.remove(); });
+    var main = doc.querySelector('article, main') || doc.body || doc.documentElement;
+    return (main.textContent || '').replace(/\s+\n/g, '\n').replace(/[ \t]{2,}/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
+  }
+  function inflateRaw(bytes) { var ds = new DecompressionStream('deflate-raw'); var w = ds.writable.getWriter(); w.write(bytes); w.close(); return new Response(ds.readable).arrayBuffer().then(function (ab) { return new Uint8Array(ab); }); }
+  function docxXmlToText(xml) {
+    var paras = xml.split(/<\/w:p>/);
+    var lines = paras.map(function (p) { return (p.match(/<w:t[^>]*>([\s\S]*?)<\/w:t>/g) || []).map(function (t) { return t.replace(/<[^>]*>/g, ''); }).join(''); });
+    return decodeEntities(lines.join('\n')).replace(/\n{3,}/g, '\n\n').trim();
+  }
+  async function extractDocx(file) {
+    var buf = new Uint8Array(await file.arrayBuffer());
+    var dv = new DataView(buf.buffer);
+    var eocd = -1;
+    for (var i = buf.length - 22; i >= 0 && i > buf.length - 22 - 65536; i--) { if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; } }
+    if (eocd < 0) throw new Error('no eocd');
+    var cdOffset = dv.getUint32(eocd + 16, true);
+    var cdCount = dv.getUint16(eocd + 10, true);
+    var p = cdOffset, target = null;
+    for (var n = 0; n < cdCount; n++) {
+      if (dv.getUint32(p, true) !== 0x02014b50) break;
+      var method = dv.getUint16(p + 10, true);
+      var compSize = dv.getUint32(p + 20, true);
+      var nameLen = dv.getUint16(p + 28, true);
+      var extraLen = dv.getUint16(p + 30, true);
+      var commentLen = dv.getUint16(p + 32, true);
+      var localOff = dv.getUint32(p + 42, true);
+      var nm = new TextDecoder().decode(buf.subarray(p + 46, p + 46 + nameLen));
+      if (nm === 'word/document.xml') target = { method: method, compSize: compSize, localOff: localOff };
+      p += 46 + nameLen + extraLen + commentLen;
+    }
+    if (!target) throw new Error('no document.xml');
+    var lo = target.localOff;
+    if (dv.getUint32(lo, true) !== 0x04034b50) throw new Error('bad local header');
+    var dataStart = lo + 30 + dv.getUint16(lo + 26, true) + dv.getUint16(lo + 28, true);
+    var comp = buf.subarray(dataStart, dataStart + target.compSize);
+    var xmlBytes = target.method === 0 ? comp : await inflateRaw(comp);
+    return docxXmlToText(new TextDecoder().decode(xmlBytes));
+  }
+
+  function setText(text) { pad.value = text; lsSet('text', text); update(); }
+  function setMsg(text, ok) {
+    var msg = $('urlMsg');
+    msg.textContent = text;
+    msg.style.color = ok ? '#5A8A5E' : '#C2493B';
+    msg.hidden = !text;
+    $('urlBox').classList.toggle('err', !!text && !ok);
+  }
+
+  async function loadFile(file) {
+    if (!file) return;
+    var name = (file.name || '').toLowerCase();
+    try {
+      var text = '';
+      if (name.endsWith('.docx')) text = await extractDocx(file);
+      else if (name.endsWith('.pdf')) { setMsg("PDFs can't be read directly — paste the text instead.", false); return; }
+      else {
+        text = await file.text();
+        if (name.endsWith('.rtf')) text = text.replace(/\\par[d]?/g, '\n').replace(/\{\\[^{}]*\}/g, '').replace(/\\[a-z]+-?\d* ?/gi, '').replace(/[{}]/g, '').trim();
+      }
+      setText(text); setMsg('', true);
+    } catch (e) { setMsg("Couldn't read that file — try pasting the text.", false); }
+  }
+
+  async function onFetchUrl(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    var url = ($('urlInput').value || '').trim();
+    if (!url) return;
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+    setMsg('Fetching page…', true);
+    try {
+      var text = '';
+      try { var res = await fetch('https://r.jina.ai/' + url); if (res.ok) text = await res.text(); } catch (err) {}
+      if (!text) { var r2 = await fetch(url); text = htmlToText(await r2.text()); }
+      text = text.trim();
+      if (!text) throw new Error('empty');
+      setText(text); setMsg('Loaded text from the page.', true);
+    } catch (err) {
+      setMsg("Couldn't load that URL — the site may block cross-origin requests. Try paste instead.", false);
+    }
+  }
+
+  async function onPaste() {
+    try {
+      var t = await navigator.clipboard.readText();
+      if (t) setText((pad.value || '') + t);
+    } catch (e) { pad.focus(); }
+  }
+  async function onCopy() {
+    try {
+      if (navigator.clipboard) await navigator.clipboard.writeText(pad.value || '');
+      else { pad.select(); document.execCommand('copy'); }
+      var lbl = $('copyLabel'); lbl.textContent = 'Copied!';
+      clearTimeout(onCopy._t); onCopy._t = setTimeout(function () { lbl.textContent = 'Copy text'; }, 1600);
+    } catch (e) {}
+  }
+  function onClear() { setText(''); setMsg('', true); pad.focus(); }
+  function toggleSocial() {
+    state.socialOn = !state.socialOn;
+    lsSet('social', state.socialOn ? '1' : '0');
+    $('socialToggle').setAttribute('aria-checked', state.socialOn ? 'true' : 'false');
+    update();
+  }
+
+  // ---- metrics ----
+  function metrics() {
+    var text = pad.value || '';
+    var trimmed = text.trim();
+    var tokens = trimmed === '' ? [] : trimmed.split(/\s+/);
+    if (EXCLUDE_NUMBERS) tokens = tokens.filter(function (w) { return !/^[\d.,]+$/.test(w); });
+    var words = tokens.length;
+    var chars = text.length;
+    var noSpace = text.replace(/\s/g, '').length;
+    var sentences = trimmed === '' ? 0 : (trimmed.match(/[^.!?…]+[.!?…]+/g) || [trimmed]).length;
+    var paragraphs = trimmed === '' ? 0 : trimmed.split(/\n{2,}/).map(function (p) { return p.trim(); }).filter(Boolean).length;
+    return { text: text, words: words, chars: chars, noSpace: noSpace, sentences: sentences, paragraphs: paragraphs, readMin: words / WPM, speakMin: words / SPEAK_WPM };
+  }
+
+  function rows(list) {
+    return list.map(function (r) { return '<div class="wc-row"><span class="rl">' + r.l + '</span><span class="rv">' + esc(r.v) + '</span></div>'; }).join('');
+  }
+  function renderSocial(m) {
+    return PLATFORMS.map(function (p) {
+      var remaining = p.limit - m.chars, over = remaining < 0;
+      var pct = Math.min(100, (m.chars / p.limit) * 100) + '%';
+      var barColor = over ? '#D14343' : p.color;
+      var remColor = over ? '#D14343' : '#8A93A6';
+      var remLabel = over ? '-' + nf(-remaining) : nf(remaining) + ' left';
+      return '<div class="wc-srow"><div class="top">'
+        + '<span class="nm"><svg width="17" height="17" viewBox="0 0 24 24" style="flex:none"><path fill="' + p.color + '" d="' + p.path + '"></path></svg>'
+        + esc(p.name) + ' <span class="lim">' + nf(p.limit) + '</span></span>'
+        + '<span class="rem" style="color:' + remColor + '">' + remLabel + '</span></div>'
+        + '<div class="wc-track"><div class="wc-fill" style="width:' + pct + ';background:' + barColor + '"></div></div></div>';
+    }).join('');
+  }
+
+  function update() {
+    var m = metrics();
+    var empty = m.text.length === 0;
+    $('metrics').hidden = empty;
+    $('footActions').hidden = empty;
+    if (!empty) { $('mWords').textContent = nf(m.words); $('mChars').textContent = nf(m.chars); }
+    $('statsEmpty').hidden = !empty;
+    $('statsBody').hidden = empty;
+    if (!empty) {
+      $('countsList').innerHTML = rows([
+        { l: 'Without spaces', v: nf(m.noSpace) },
+        { l: 'Sentences', v: nf(m.sentences) },
+        { l: 'Paragraphs', v: nf(m.paragraphs) }
+      ]);
+      $('readingList').innerHTML = rows([
+        { l: 'Reading time', v: fmtTime(m.readMin) },
+        { l: 'Speaking time', v: fmtTime(m.speakMin) }
+      ]);
+    }
+    if (state.socialOn) {
+      $('socialList').hidden = false; $('socialHint').hidden = true;
+      $('socialList').innerHTML = renderSocial(m);
+    } else {
+      $('socialList').hidden = true; $('socialHint').hidden = false;
+      $('socialList').innerHTML = '';
+    }
+    $('emptyState').hidden = !(empty && !state.focused);
+  }
+
+  // restore
+  var t0 = lsGet('text'); if (t0) pad.value = t0;
+  var so = lsGet('social'); if (so !== null) state.socialOn = so === '1';
+  $('socialToggle').setAttribute('aria-checked', state.socialOn ? 'true' : 'false');
+
+  pad.addEventListener('input', function () { lsSet('text', pad.value); update(); });
+  pad.addEventListener('focus', function () { state.focused = true; update(); });
+  pad.addEventListener('blur', function () { state.focused = false; update(); });
+  $('emptyState').addEventListener('click', function () { pad.focus(); });
+  if (fileInput) fileInput.addEventListener('change', function (e) { loadFile(e.target.files && e.target.files[0]); e.target.value = ''; });
+  $('copyBtn').addEventListener('click', onCopy);
+  $('clearBtn').addEventListener('click', onClear);
+  $('pasteBtn').addEventListener('click', onPaste);
+  $('uploadBtn').addEventListener('click', function () { fileInput.click(); });
+  $('urlForm').addEventListener('submit', onFetchUrl);
+  $('urlInput').addEventListener('input', function () { setMsg('', true); });
+  $('socialToggle').addEventListener('click', toggleSocial);
+
+  update();
+})();
+</script>
+</body>
+</html>

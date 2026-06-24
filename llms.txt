@@ -1,0 +1,73 @@
+# Free Word Counter
+
+> Free online word counter — count words, characters, sentences and paragraphs instantly as you type. Live reading time and keyword density, no sign-up, and your text never leaves your browser.
+
+- URL: https://free-word-counter.github.io/
+- Type: free client-side web tool (no sign-up, no upload, works offline)
+
+## About
+
+Free Word Counter is a fast, private tool that counts the words and characters in your text the moment you type or paste it. Alongside the live word and character counts it shows sentences, paragraphs, and reading and speaking time — handy for essays, articles, social posts, and SEO copy. Everything runs entirely in your browser: no sign-up, no uploads, and your text never leaves your device.
+
+## How to use
+
+1. Type or paste your text — or upload a .txt, .md or .docx file, or paste a link to pull its text — and counting starts instantly.
+2. Stay in Writing mode for words, characters, sentences, paragraphs, reading time and pages; switch to Social for per-platform character limits.
+3. Read the big live count and the full stats matrix in the highlighted panel above your text.
+4. Set a target word count to track your progress with a live goal bar as you write.
+
+## Character counter
+
+Need a character count rather than words? Every mode shows characters with and without spaces as you type, and the Social tab works as a live character counter that checks your text against real platform limits — handy for bios, headlines, and anywhere a strict character cap applies.
+
+## Essay word counter
+
+Writing an essay or assignment to a word limit? Set a target word count and a progress bar shows how close you are, while estimated pages and reading time help you reach a 500-, 1,000-, or 2,500-word requirement without opening a full word processor.
+
+## Meta description & SEO title length checker
+
+Search snippets get cut off past a certain length: aim for roughly 50–60 characters for a title tag and about 150–160 for a meta description. Paste your draft to see the exact character count and trim it so Google shows it in full.
+
+## Social media character counter
+
+Captions and posts each have their own cap. In the Social tab, paste your text to see your character count against X (280), Threads (500), Bluesky (300), Instagram (2,200), and LinkedIn (3,000) at a glance — the bar turns red the moment you go over.
+
+## Who uses it
+
+- Students — hit essay and assignment word limits, and estimate pages and reading time.
+- Bloggers & writers — check article length, reading time, and page count at a glance.
+- SEO writers — size up title tags and meta descriptions and gauge content length against search intent.
+- Social media managers — keep captions within each platform’s character limit before posting.
+- Translators & editors — track length between source and target text and count words for quoting and billing.
+
+## FAQ
+
+### Is this word counter free?
+Yes — completely free, with no sign-up, no ads in your text, and no limit on how much you can paste or type.
+
+### How does it count words?
+It counts the moment you type or paste, splitting your text on spaces and line breaks. Characters, sentences, and paragraphs update live too.
+
+### Is my text private?
+Yes. All counting happens inside your browser — your text is never uploaded to a server and never leaves your device.
+
+### How are reading and speaking time calculated?
+Reading time assumes about 200 words per minute and speaking time about 130 words per minute — typical averages for adults.
+
+### Does it work on my phone and offline?
+Yes. It works on mobile and desktop, and once the page has loaded it keeps working without an internet connection.
+
+### How many words are on one page?
+A typical double-spaced page holds about 275 words, so 1,000 words is roughly 3.6 pages. The exact number depends on your font, size, and spacing.
+
+### What is the character limit for a post on X (Twitter)?
+A standard X post allows 280 characters. The Social tab also checks Threads (500), Bluesky (300), Instagram captions (2,200), and LinkedIn (3,000).
+
+### How long should a meta description be?
+Aim for about 150–160 characters. Google truncates longer descriptions in search results, so paste your draft here to keep it within range.
+
+### How long should an SEO title tag be?
+Around 50–60 characters is the sweet spot before Google cuts the title off in search results.
+
+### Does it count words the same way as Microsoft Word?
+Very closely — both count runs of non-space characters as words. Small differences can appear with hyphenated terms, numbers, and symbols.

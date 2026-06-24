@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1f2328"/>
+  <rect x="0" y="0" width="1200" height="12" fill="#2563eb"/>
+  <text x="84" y="330" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="86" font-weight="800" fill="#ffffff">Free Word Counter</text>
+  <text x="84" y="404" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="34" fill="#ffffffcc">Count words and characters instantly, as you type</text>
+  <text x="84" y="560" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="26" fill="#ffffff99">free-word-counter.github.io</text>
+</svg>
