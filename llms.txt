@@ -54,6 +54,12 @@ Yes. All counting happens inside your browser — your text is never uploaded to
 ### How are reading and speaking time calculated?
 Reading time assumes about 200 words per minute and speaking time about 130 words per minute — typical averages for adults.
 
+### What does the Reading ease score mean?
+Reading ease is the Flesch Reading Ease score, from 0 to 100 — the higher the number, the easier the text is to read. As a guide: 90–100 is very easy (5th-grade level), 60–70 is plain English most adults read comfortably, 50–60 is fairly difficult, and below 30 is very hard, suited to college graduates. It rises when you use shorter sentences and shorter words.
+
+### What does the Grade level mean (and what is Grade 13)?
+Grade level is the Flesch–Kincaid Grade Level — the US school grade a reader needs to understand your text on the first read. Grade 8 is about the average adult, Grade 12 is a high-school senior, and the scale continues past 12: Grade 13–16 is college level (13 ≈ first-year college) and 17+ is postgraduate. A lower grade means your writing is easier to follow.
+
 ### Does it work on my phone and offline?
 Yes. It works on mobile and desktop, and once the page has loaded it keeps working without an internet connection.
 

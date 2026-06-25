@@ -88,6 +88,22 @@
     },
     {
       "@type": "Question",
+      "name": "What does the Reading ease score mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reading ease is the Flesch Reading Ease score, from 0 to 100 — the higher the number, the easier the text is to read. As a guide: 90–100 is very easy (5th-grade level), 60–70 is plain English most adults read comfortably, 50–60 is fairly difficult, and below 30 is very hard, suited to college graduates. It rises when you use shorter sentences and shorter words."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the Grade level mean (and what is Grade 13)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Grade level is the Flesch–Kincaid Grade Level — the US school grade a reader needs to understand your text on the first read. Grade 8 is about the average adult, Grade 12 is a high-school senior, and the scale continues past 12: Grade 13–16 is college level (13 ≈ first-year college) and 17+ is postgraduate. A lower grade means your writing is easier to follow."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Does it work on my phone and offline?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -178,16 +194,34 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
   <header class="wc-top">
     <span class="wc-logo"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Free Word Counter logo"><rect width="64" height="64" rx="14" fill="#ffffff"/><polygon points="32,6.5 54,19.5 54,44.5 32,57.5 10,44.5 10,19.5" fill="none" stroke="#1E2330" stroke-width="3" stroke-linejoin="round"/><path d="M32 16C28 18 25.5 23 25.5 29L32 40.5L38.5 29C38.5 23 36 18 32 16Z" fill="#1E2330"/><circle cx="32" cy="29.5" r="2.6" fill="#ffffff"/><line x1="32" y1="18.5" x2="32" y2="27" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round"/><rect x="22.5" y="42.5" width="19" height="2.6" rx="1.3" fill="#1E2330"/><text x="32" y="55.5" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#1E2330">123</text></svg></span><h1 class="wc-title">Free Word Counter</h1>
     <span class="wc-sub">Counts update as you type — nothing leaves your browser.</span>
+    <button type="button" id="themeBtn" class="wc-theme" aria-label="Toggle dark mode"></button>
   </header>
 
   <div class="wc-grid">
     <section class="wc-main">
       <div class="wc-editor">
-        <div class="wc-metrics" id="metrics" aria-label="Live counts" hidden>
+        <div class="wc-metrics" id="metrics" aria-label="Live counts">
           <div class="wc-metric"><span class="wc-mval" id="mWords">0</span><span class="wc-mlabel">words,</span></div>
           <div class="wc-metric"><span class="wc-mval" id="mChars">0</span><span class="wc-mlabel">characters</span></div>
         </div>
+        <div class="wc-limit" id="limitRow">
+          <span class="wc-limit-lbl">Limit</span>
+          <span class="wc-limit-field">
+            <input type="number" min="1" step="1" inputmode="numeric" id="limitInput" class="wc-limit-input" placeholder="none" aria-label="Set a word or character limit" aria-describedby="limitNote" />
+            <button type="button" class="wc-limit-clear" id="limitClear" aria-label="Clear limit" hidden><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg></button>
+          </span>
+          <div class="wc-unit" role="group" aria-label="Limit unit">
+            <button type="button" class="wc-unit-b" data-unit="words" aria-pressed="true">Words</button>
+            <button type="button" class="wc-unit-b" data-unit="chars" aria-pressed="false">Chars</button>
+          </div>
+          <span class="wc-limit-note" id="limitNote" role="status" hidden></span>
+          <div class="wc-limit-bar" id="limitBar" hidden>
+            <div class="wc-limit-track"><div class="wc-limit-fill" id="limitFill"></div></div>
+            <span class="wc-limit-meta" id="limitMeta"></span>
+          </div>
+        </div>
         <div class="wc-tawrap">
+          <div class="wc-backdrop" id="backdrop" aria-hidden="true"></div>
           <textarea id="pad" class="pad" aria-label="Your text" spellcheck="false" placeholder=""></textarea>
           <div class="wc-empty" id="emptyState">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
@@ -201,8 +235,8 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
             <input type="file" id="fileInput" accept=".txt,.md,.markdown,.rtf,.docx,text/plain" hidden aria-label="Upload a text file" />
           </div>
           <div class="wc-foot-a" id="footActions" hidden>
-            <button type="button" id="copyBtn" class="wc-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span id="copyLabel">Copy text</span></button>
-            <button type="button" id="clearBtn" class="wc-iconbtn" title="Clear all"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>Clear all</button>
+            <button type="button" id="copyBtn" class="wc-primary"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span id="copyLabel">Copy</span></button>
+            <button type="button" id="clearBtn" class="wc-iconbtn" title="Clear all"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>Clear<span class="lbl-x"> all</span></button>
           </div>
         </div>
       </div>
@@ -210,9 +244,9 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
       <form class="wc-urlgroup" id="urlForm">
         <label class="wc-urllabel" for="urlInput">Count from URL</label>
         <div class="wc-urlbox" id="urlBox">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7480" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
           <input id="urlInput" placeholder="https://example.com/article" spellcheck="false" />
-          <span class="wc-enter">↵ ENTER</span>
+          <button type="submit" class="wc-go" aria-label="Count words from this URL"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>Count</button>
         </div>
         <div class="wc-urlmsg" id="urlMsg" hidden></div>
       </form>
@@ -221,7 +255,7 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
     <aside class="wc-side">
       <div class="wc-card">
         <div class="wc-cardhead">
-          <div class="wc-ti"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E2330" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><h2>Statistics</h2></div>
+          <div class="wc-ti"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><h2>Statistics</h2></div>
         </div>
         <p class="wc-statsempty" id="statsEmpty">Start typing to see stats.</p>
         <div id="statsBody" hidden>
@@ -238,17 +272,15 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
 
       <div class="wc-card">
         <div class="wc-cardhead">
-          <div class="wc-ti"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E2330" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg><h2>Check social platform limits</h2></div>
+          <div class="wc-ti"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg><h2>Check social platform limits</h2></div>
           <button type="button" id="socialToggle" class="wc-toggle" role="switch" aria-checked="false" aria-label="Toggle social platform limits"><span class="wc-knob"></span></button>
         </div>
         <p class="wc-socialhint" id="socialHint">Turn on to check your text against X, Threads, Bluesky, Instagram & LinkedIn limits.</p>
         <div class="wc-social" id="socialList" hidden></div>
       </div>
     </aside>
-  </div>
-</main>
 
-<section class="about">
+    <section class="about">
   <h2>What is a word counter?</h2>
   <p>Free Word Counter is a fast, private tool that counts the words and characters in your text the moment you type or paste it. Alongside the live word and character counts it shows sentences, paragraphs, and reading and speaking time — handy for essays, articles, social posts, and SEO copy. Everything runs entirely in your browser: no sign-up, no uploads, and your text never leaves your device.</p>
   <h2>How to use Free Word Counter</h2>
@@ -269,6 +301,8 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
       <div class="faq-item"><h3>How does it count words?</h3><p>It counts the moment you type or paste, splitting your text on spaces and line breaks. Characters, sentences, and paragraphs update live too.</p></div>
       <div class="faq-item"><h3>Is my text private?</h3><p>Yes. All counting happens inside your browser — your text is never uploaded to a server and never leaves your device.</p></div>
       <div class="faq-item"><h3>How are reading and speaking time calculated?</h3><p>Reading time assumes about 200 words per minute and speaking time about 130 words per minute — typical averages for adults.</p></div>
+      <div class="faq-item"><h3>What does the Reading ease score mean?</h3><p>Reading ease is the Flesch Reading Ease score, from 0 to 100 — the higher the number, the easier the text is to read. As a guide: 90–100 is very easy (5th-grade level), 60–70 is plain English most adults read comfortably, 50–60 is fairly difficult, and below 30 is very hard, suited to college graduates. It rises when you use shorter sentences and shorter words.</p></div>
+      <div class="faq-item"><h3>What does the Grade level mean (and what is Grade 13)?</h3><p>Grade level is the Flesch–Kincaid Grade Level — the US school grade a reader needs to understand your text on the first read. Grade 8 is about the average adult, Grade 12 is a high-school senior, and the scale continues past 12: Grade 13–16 is college level (13 ≈ first-year college) and 17+ is postgraduate. A lower grade means your writing is easier to follow.</p></div>
       <div class="faq-item"><h3>Does it work on my phone and offline?</h3><p>Yes. It works on mobile and desktop, and once the page has loaded it keeps working without an internet connection.</p></div>
       <div class="faq-item"><h3>How many words are on one page?</h3><p>A typical double-spaced page holds about 275 words, so 1,000 words is roughly 3.6 pages. The exact number depends on your font, size, and spacing.</p></div>
       <div class="faq-item"><h3>What is the character limit for a post on X (Twitter)?</h3><p>A standard X post allows 280 characters. The Social tab also checks Threads (500), Bluesky (300), Instagram captions (2,200), and LinkedIn (3,000).</p></div>
@@ -276,91 +310,161 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
       <div class="faq-item"><h3>How long should an SEO title tag be?</h3><p>Around 50–60 characters is the sweet spot before Google cuts the title off in search results.</p></div>
       <div class="faq-item"><h3>Does it count words the same way as Microsoft Word?</h3><p>Very closely — both count runs of non-space characters as words. Small differences can appear with hyphenated terms, numbers, and symbols.</p></div>
   </div>
-</section>
-<footer class="foot">100% free · works offline · your text never leaves your browser</footer>
+    </section>
+  </div>
+  <footer class="foot">100% free · works offline · your text never leaves your browser</footer>
+</main>
 
 <style>
-  :root{color-scheme:light;--ink:#1E2330;--muted:#6A7385}
-  html,body{background:#F4F6FA;color:#1E2330}
+  :root{
+    color-scheme:light dark;
+    --bg:#E6EAF1;--card:#ffffff;--panel:#EFF2F7;--field:#ffffff;
+    --ink:#1E2330;--ink2:#2A3142;
+    --muted:#5A6373;--muted2:#6A7385;--faint:#8A93A6;--faint2:#9AA3B2;--placeholder:#AAB2C0;
+    --line:#DADFE8;--line2:#E7EAF0;--line3:#EAEDF3;--fieldbd:#CBD2DD;--urlbd:#D6DCE6;
+    --accent:#2563EB;--accenth:#1D4FD4;--accent2:#1B45C4;--ring:rgba(37,99,235,.13);--tint:#E4EDFD;--tinth:#D5E2FC;
+    --danger:#D14343;--clear:#B2384A;--ok:#5A8A5E;
+    --track:#DCE2EB;--toggle:#C4CCD8;--hover:#E7EBF1;--sel:#DCE7FF;--scribble:#B6C4E4;--scroll:#C2CAD7;--hl:rgba(214,69,69,.22);
+    --shadow:0 1px 3px rgba(20,30,60,.07)
+  }
+  /* dark tokens — applied when the OS prefers dark (and no manual override), OR when forced via data-theme="dark" */
+  @media (prefers-color-scheme:dark){:root:not([data-theme]){
+    --bg:#0f1318;--card:#1a1f27;--panel:#161b22;--field:#12161c;
+    --ink:#e7e9ee;--ink2:#d4d9e1;
+    --muted:#9aa4b2;--muted2:#959fad;--faint:#7e8898;--faint2:#6f7a8a;--placeholder:#586273;
+    --line:#2f3743;--line2:#232a33;--line3:#1e242d;--fieldbd:#3a424e;--urlbd:#333b46;
+    --accent:#5b8cff;--accenth:#6f9bff;--accent2:#86abff;--ring:rgba(91,140,255,.25);--tint:#22304d;--tinth:#293a5c;
+    --danger:#f0626b;--clear:#f0626b;--ok:#74c47d;
+    --track:#2a313b;--toggle:#3a424e;--hover:#232a33;--sel:#2b3b63;--scribble:#465062;--scroll:#3f4753;--hl:rgba(240,98,107,.30);
+    --shadow:0 1px 2px rgba(0,0,0,.3)
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0f1318;--card:#1a1f27;--panel:#161b22;--field:#12161c;--ink:#e7e9ee;--ink2:#d4d9e1;
+    --muted:#9aa4b2;--muted2:#959fad;--faint:#7e8898;--faint2:#6f7a8a;--placeholder:#586273;
+    --line:#2f3743;--line2:#232a33;--line3:#1e242d;--fieldbd:#3a424e;--urlbd:#333b46;
+    --accent:#5b8cff;--accenth:#6f9bff;--accent2:#86abff;--ring:rgba(91,140,255,.25);--tint:#22304d;--tinth:#293a5c;
+    --danger:#f0626b;--clear:#f0626b;--ok:#74c47d;
+    --track:#2a313b;--toggle:#3a424e;--hover:#232a33;--sel:#2b3b63;--scribble:#465062;--scroll:#3f4753;--hl:rgba(240,98,107,.30);
+    --shadow:0 1px 2px rgba(0,0,0,.3)
+  }
+  html,body{background:var(--bg);color:var(--ink)}
   [hidden]{display:none!important}
-  .tool{max-width:1180px;margin:0 auto;padding:40px 24px;font-family:Arial,Helvetica,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1E2330}
+  .tool{max-width:1180px;margin:0 auto;padding:40px 24px;font-family:Arial,Helvetica,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
 
-  .wc-top{display:flex;align-items:center;gap:10px;margin-bottom:22px;padding-left:2px;flex-wrap:wrap}
+  .wc-top{position:relative;display:flex;align-items:center;gap:10px;margin-bottom:22px;padding:0 46px 0 0;flex-wrap:wrap}
   .wc-logo{flex:none;width:30px;height:30px;line-height:0}
   .wc-logo svg{display:block;width:30px;height:30px}
-  .wc-title{font-size:22px;font-weight:700;color:#1E2330;letter-spacing:-.01em;margin:0}
-  .wc-sub{font-size:13.5px;color:#8A93A6}
+  .wc-title{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin:0}
+  .wc-sub{font-size:13.5px;color:var(--faint)}
+  .wc-theme{position:absolute;top:-2px;right:0;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--muted);cursor:pointer;transition:background .15s ease,color .15s ease,border-color .15s ease}
+  .wc-theme:hover{color:var(--ink);border-color:var(--fieldbd);background:var(--hover)}
+  .wc-theme svg{width:18px;height:18px}
 
-  .wc-grid{display:flex;gap:20px;align-items:stretch;flex-wrap:wrap}
-  .wc-main{flex:1 1 560px;min-width:320px;display:flex;flex-direction:column}
+  .wc-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;column-gap:20px;align-items:start}
+  .wc-main{grid-column:1;grid-row:1;min-width:0;display:flex;flex-direction:column}
 
-  .wc-editor{background:#fff;border:1px solid #E5E8F0;border-radius:16px;box-shadow:0 1px 2px rgba(20,30,60,.04);display:flex;flex-direction:column;min-height:420px;overflow:hidden}
+  .wc-editor{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:440px;overflow:hidden}
   .wc-metrics{display:flex;align-items:baseline;gap:10px;padding:16px 18px 0;flex-wrap:wrap}
   .wc-metric{display:flex;align-items:baseline;gap:6px}
-  .wc-mval,.wc-mlabel{font-size:26px;font-weight:800;color:#1B45C4;line-height:1;letter-spacing:-.015em}
+  .wc-mval,.wc-mlabel{font-size:26px;font-weight:800;color:var(--accent2);line-height:1;letter-spacing:-.015em}
   .wc-mval{font-variant-numeric:tabular-nums}
-  .wc-tawrap{position:relative;flex:1;display:flex;margin:14px 16px;border:1.5px solid #D1D5DB;border-radius:12px;background:#fff;transition:border-color .15s ease,box-shadow .15s ease}
-  .wc-tawrap:focus-within{border-color:#2563EB;box-shadow:0 0 0 3px rgba(37,99,235,.13)}
-  .pad{flex:1;width:100%;resize:none;border:none;outline:none;background:transparent;padding:16px 18px;font-size:15px;line-height:1.7;color:#232a39;min-height:280px;font-family:inherit;border-radius:12px}
-  .pad::placeholder{color:#AAB2C0}
-  .pad::selection{background:#DCE7FF}
-  .wc-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;padding:24px;cursor:text;text-align:center;font-size:15px;font-weight:600;color:#9AA3B2}
-  .wc-empty svg{flex:none;stroke:#B6C4E4}
+  .wc-limit{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 18px 0}
+  .wc-limit-lbl{font-size:12.5px;font-weight:700;color:var(--muted)}
+  .wc-limit-field{position:relative;display:inline-flex;align-items:center}
+  .wc-limit-input{width:108px;border:1.5px solid var(--urlbd);border-radius:8px;background:var(--field);color:var(--ink2);padding:6px 26px 6px 9px;font:inherit;font-size:13px;appearance:textfield;-moz-appearance:textfield}
+  .wc-limit-input::-webkit-outer-spin-button,.wc-limit-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .wc-limit-clear{position:absolute;right:5px;display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;padding:0;border:none;border-radius:5px;background:transparent;color:var(--faint);cursor:pointer;transition:background .12s ease,color .12s ease}
+  .wc-limit-clear:hover{color:var(--ink);background:var(--hover)}
+  .wc-unit{display:inline-flex;border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:2px;gap:2px}
+  .wc-unit-b{font:inherit;font-size:12px;font-weight:600;padding:5px 11px;border:none;border-radius:6px;background:transparent;color:var(--muted);cursor:pointer;transition:color .12s ease,background .12s ease}
+  .wc-unit-b[aria-pressed="true"]{background:var(--card);color:var(--accent);box-shadow:0 1px 2px rgba(16,24,40,.12)}
+  .wc-limit-note{flex-basis:100%;font-size:12px;margin-top:1px}
+  .wc-limit-note.err{color:var(--danger);font-weight:600}
+  .wc-limit-note.info{color:var(--muted)}
+  .wc-limit-bar{flex-basis:100%;display:flex;flex-direction:column;gap:5px;margin-top:3px}
+  .wc-limit-track{height:6px;border-radius:999px;background:var(--track);overflow:hidden}
+  .wc-limit-fill{height:100%;width:0;border-radius:999px;background:var(--accent);transition:width .25s ease,background .2s ease}
+  .wc-limit-meta{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .wc-limit-meta.over{color:var(--danger);font-weight:600}
+  .wc-tawrap{position:relative;flex:1;display:flex;margin:14px 16px;border:1.5px solid var(--fieldbd);border-radius:12px;background:var(--field);transition:border-color .15s ease,box-shadow .15s ease}
+  .wc-tawrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--ring)}
+  .wc-backdrop{position:absolute;inset:0;margin:0;padding:16px 30px 16px 18px;border-radius:12px;font-family:inherit;font-size:15px;line-height:1.7;white-space:pre-wrap;overflow-wrap:break-word;color:transparent;overflow:hidden;pointer-events:none;z-index:0}
+  .wc-hl{background:var(--hl);box-shadow:0 0 0 1px var(--hl);border-radius:2px;color:transparent}
+  .pad{position:relative;z-index:1;flex:1;width:100%;resize:none;border:none;outline:none;background:transparent;padding:16px 18px;font-size:15px;line-height:1.7;color:var(--ink2);min-height:180px;font-family:inherit;border-radius:12px;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--scroll) transparent}
+  .pad::placeholder{color:var(--placeholder)}
+  .pad::selection{background:var(--sel)}
+  .pad::-webkit-scrollbar{width:12px}
+  .pad::-webkit-scrollbar-track{background:transparent}
+  .pad::-webkit-scrollbar-thumb{background:var(--scroll);border-radius:10px;border:3px solid var(--field);background-clip:padding-box;min-height:36px}
+  .pad::-webkit-scrollbar-thumb:hover{background:var(--faint);background-clip:padding-box}
+  .wc-empty{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;gap:8px;padding:24px;cursor:text;text-align:center;font-size:15px;font-weight:600;color:var(--faint2)}
+  .wc-empty svg{flex:none;stroke:var(--scribble)}
 
-  .wc-foot{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-top:1px solid #EEF0F6;gap:8px;flex-wrap:wrap}
+  .wc-foot{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-top:1px solid var(--line2);gap:8px;flex-wrap:wrap}
   .wc-tools{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
   .wc-foot-a{display:flex;align-items:center;gap:8px}
-  .wc-ghost{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;background:transparent;border:none;border-radius:8px;cursor:pointer;font-size:13.5px;font-weight:600;color:#5A6373;font-family:inherit;transition:background .15s ease}
-  .wc-ghost:hover{background:#F1F2F6}
-  .wc-primary{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;background:#2563EB;border:none;border-radius:8px;cursor:pointer;color:#fff;font-size:13px;font-weight:700;font-family:inherit;transition:background .15s ease,transform .12s ease}
-  .wc-primary:hover{background:#1D4FD4}
+  .wc-ghost{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;background:transparent;border:none;border-radius:8px;cursor:pointer;font-size:13.5px;font-weight:600;color:var(--muted);font-family:inherit;transition:background .15s ease}
+  .wc-ghost:hover{background:var(--hover)}
+  .wc-primary{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;background:var(--accent);border:none;border-radius:8px;cursor:pointer;color:#fff;font-size:13px;font-weight:700;font-family:inherit;transition:background .15s ease,transform .12s ease}
+  .wc-primary:hover{background:var(--accenth)}
   .wc-primary:active{transform:translateY(1px)}
-  .wc-iconbtn{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border:none;background:transparent;border-radius:8px;cursor:pointer;color:#B2384A;font-size:13px;font-weight:600;font-family:inherit;transition:background .15s ease,color .15s ease}
-  .wc-iconbtn:hover{background:#F1F2F6}
+  .wc-iconbtn{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border:none;background:transparent;border-radius:8px;cursor:pointer;color:var(--clear);font-size:13px;font-weight:600;font-family:inherit;transition:background .15s ease,color .15s ease}
+  .wc-iconbtn:hover{background:var(--hover)}
 
-  .wc-urlgroup{display:flex;flex-direction:column;gap:8px;margin-top:16px;padding-left:2px}
-  .wc-urllabel{font-size:12.5px;font-weight:700;letter-spacing:.02em;color:#5A6373}
-  .wc-urlbox{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #DFE3EC;border-radius:10px;padding:0 10px 0 14px;box-shadow:0 1px 2px rgba(20,30,60,.05)}
-  .wc-urlbox.err{border-color:#E7B4AE}
-  .wc-urlbox input{flex:1;min-width:0;border:none;outline:none;background:transparent;padding:12px 0;font-size:14px;color:#232a39;font-family:inherit}
-  .wc-enter{flex:none;font-size:10.5px;font-weight:700;letter-spacing:.03em;color:#8A93A6;background:#F1F3F7;border:1px solid #E2E6EE;border-radius:5px;padding:3px 7px}
+  .wc-urlgroup{display:flex;flex-direction:column;gap:8px;margin-top:16px;padding-left:0}
+  .wc-urllabel{font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--muted)}
+  .wc-urlbox{display:flex;align-items:center;gap:9px;background:var(--field);border:1.5px solid var(--urlbd);border-radius:10px;padding:0 6px 0 14px;box-shadow:var(--shadow)}
+  .wc-urlbox.err{border-color:var(--danger)}
+  .wc-urlbox input{flex:1;min-width:0;border:none;outline:none;background:transparent;padding:12px 0;font-size:14px;color:var(--ink2);font-family:inherit}
+  .wc-go{flex:none;display:inline-flex;align-items:center;gap:6px;border:none;cursor:pointer;background:var(--tint);color:var(--accent);font-family:inherit;font-size:12.5px;font-weight:700;border-radius:7px;padding:8px 13px;margin:5px 0;transition:background .15s ease,transform .12s ease}
+  .wc-go:hover{background:var(--tinth)}
+  .wc-go:active{transform:translateY(1px)}
+  .wc-go svg{flex:none}
   .wc-urlmsg{font-size:12.5px;padding-left:4px}
 
-  .wc-side{flex:0 0 320px;min-width:280px;display:flex;flex-direction:column;gap:16px}
-  .wc-card{background:#fff;border:1px solid #E5E8F0;border-radius:16px;box-shadow:0 1px 2px rgba(20,30,60,.04);overflow:hidden}
-  .wc-cardhead{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:16px 20px;border-bottom:1px solid #EEF0F6}
-  .wc-cardhead h2{font-size:15.5px;font-weight:700;color:#1E2330;margin:0}
-  .wc-ti{display:flex;align-items:center;gap:9px;min-width:0}
-  .wc-statsempty{margin:0;padding:20px;font-size:13.5px;color:#9AA3B2}
+  .wc-side{grid-column:2;grid-row:1 / span 2;align-self:start;position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto;scrollbar-width:thin;min-width:0;display:flex;flex-direction:column;gap:16px}
+  .wc-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+  .wc-cardhead{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:16px 20px;border-bottom:1px solid var(--line2)}
+  .wc-cardhead h2{font-size:15.5px;font-weight:700;color:var(--ink);margin:0}
+  .wc-ti{display:flex;align-items:center;gap:9px;min-width:0;color:var(--ink)}
+  .wc-statsempty{margin:0;padding:20px;font-size:13.5px;color:var(--faint2)}
   .wc-statsec{padding:16px 20px 8px}
   .wc-statsec.last{padding:2px 20px 18px}
-  .wc-seclabel{font-size:11.5px;font-weight:700;letter-spacing:.07em;color:#9AA3B2;text-transform:uppercase;padding-bottom:8px}
+  .wc-seclabel{font-size:11.5px;font-weight:700;letter-spacing:.07em;color:var(--faint2);text-transform:uppercase;padding-bottom:8px}
   .wc-statsec.last .wc-seclabel{padding:10px 0 8px}
-  .wc-row{display:flex;align-items:baseline;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F3F8}
-  .wc-row .rl{font-size:14px;color:#6A7385}
-  .wc-row .rv{font-size:15px;font-weight:600;color:#2A3142;font-variant-numeric:tabular-nums}
+  .wc-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line3)}
+  .wc-row .rl{font-size:14px;color:var(--muted2)}
+  .wc-row .rv{font-size:15px;font-weight:600;color:var(--ink2);font-variant-numeric:tabular-nums;text-align:right}
 
-  .wc-toggle{position:relative;width:40px;height:23px;flex:none;border:none;border-radius:999px;cursor:pointer;background:#CBD2DD;transition:background .18s ease}
-  .wc-toggle[aria-checked="true"]{background:#2563EB}
+  .wc-toggle{position:relative;width:40px;height:23px;flex:none;border:none;border-radius:999px;cursor:pointer;background:var(--toggle);transition:background .18s ease}
+  .wc-toggle[aria-checked="true"]{background:var(--accent)}
   .wc-knob{position:absolute;top:2.5px;left:2.5px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.28);transition:left .18s ease}
   .wc-toggle[aria-checked="true"] .wc-knob{left:19.5px}
-  .wc-subt{font-weight:500;color:#98A1AD}
-  .wc-socialhint{margin:0;padding:16px 20px 18px;font-size:13px;line-height:1.55;color:#9AA3B2}
+  .wc-socialhint{margin:0;padding:16px 20px 18px;font-size:13px;line-height:1.55;color:var(--faint2)}
   .wc-social{padding:14px 20px 18px;display:flex;flex-direction:column;gap:15px}
   .wc-srow .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
-  .wc-srow .nm{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#2A3142}
-  .wc-srow .lim{font-size:11.5px;font-weight:600;color:#AAB2C0;font-variant-numeric:tabular-nums}
+  .wc-srow .nm{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--ink2)}
+  .wc-srow .lim{font-size:11.5px;font-weight:600;color:var(--faint2);font-variant-numeric:tabular-nums}
   .wc-srow .rem{font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}
-  .wc-track{height:5px;background:#EFF1F6;border-radius:5px;overflow:hidden}
+  .wc-track{height:5px;background:var(--track);border-radius:5px;overflow:hidden}
   .wc-fill{height:100%;border-radius:5px;transition:width .3s ease}
 
   @media (max-width:680px){
     .tool{padding:22px 14px}
-    .wc-main,.wc-side{flex:1 1 100%;min-width:0}
+    .wc-grid{display:flex;flex-direction:column}
+    .wc-side{position:static;max-height:none;overflow:visible}
+    .about{max-width:none}
     .wc-mval,.wc-mlabel{font-size:24px}
+    .wc-foot{flex-wrap:nowrap;gap:6px;padding:9px 10px}
+    .wc-tools{gap:0}
+    .wc-foot-a{gap:2px}
+    .wc-ghost{padding:8px 9px;gap:6px}
+    .wc-primary{padding:8px 11px}
+    .wc-iconbtn{padding:8px 9px;gap:6px}
+    .lbl-x{display:none}
   }
 
-  .about{max-width:800px;margin:24px auto 0;padding:8px 16px 0;color:var(--muted);line-height:1.7;font-size:15px;font-family:Arial,Helvetica,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .about{grid-column:1;grid-row:2;max-width:760px;margin:30px 0 0;padding:0;color:var(--muted);line-height:1.7;font-size:15px;font-family:Arial,Helvetica,-apple-system,"Segoe UI",Roboto,sans-serif}
   .about h2{color:var(--ink);font-size:19px;font-weight:600;margin:24px 0 8px}
   .about p{margin:0 0 10px}
   .how{margin:8px 0 0;padding-left:22px}
@@ -377,10 +481,10 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
 <script>
 (function () {
   var WPM = 200, SPEAK_WPM = 130, MAXCHARS = 10000, EXCLUDE_NUMBERS = false;
-  var LS = { text: 'wordcounter.text', social: 'wordcounter.social' };
+  var LS = { text: 'wordcounter.text', social: 'wordcounter.social', theme: 'wordcounter.theme', limit: 'wordcounter.limit', unit: 'wordcounter.unit' };
   var PLATFORMS = [
-    { name: 'X (Twitter)', color: '#0F1419', limit: 280, path: 'M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z' },
-    { name: 'Threads', color: '#000000', limit: 500, path: 'M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.291 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.781 3.631 2.695 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.358-.218-3.255-.801-1.06-.69-1.68-1.745-1.746-2.97-.13-2.42 1.823-4.176 4.97-4.367.882-.054 1.74-.012 2.526.121-.117-.7-.36-1.255-.728-1.656-.474-.516-1.205-.78-2.176-.78l-.07-.001c-.85 0-2.005.234-2.74 1.328l-1.687-1.135c.985-1.466 2.7-2.236 4.426-2.236h.082c2.93.022 4.677 1.853 4.91 5.046l.006.027.001.057c.71.301 1.327.682 1.84 1.139 1.21 1.078 1.876 2.59 1.876 4.255 0 .77-.122 1.504-.36 2.176z' },
+    { name: 'X (Twitter)', color: 'var(--ink)', limit: 280, path: 'M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z' },
+    { name: 'Threads', color: 'var(--ink)', limit: 500, path: 'M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.291 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.781 3.631 2.695 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.358-.218-3.255-.801-1.06-.69-1.68-1.745-1.746-2.97-.13-2.42 1.823-4.176 4.97-4.367.882-.054 1.74-.012 2.526.121-.117-.7-.36-1.255-.728-1.656-.474-.516-1.205-.78-2.176-.78l-.07-.001c-.85 0-2.005.234-2.74 1.328l-1.687-1.135c.985-1.466 2.7-2.236 4.426-2.236h.082c2.93.022 4.677 1.853 4.91 5.046l.006.027.001.057c.71.301 1.327.682 1.84 1.139 1.21 1.078 1.876 2.59 1.876 4.255 0 .77-.122 1.504-.36 2.176z' },
     { name: 'Bluesky', color: '#1185FE', limit: 300, path: 'M5.769 4.477C8.115 6.24 10.638 9.815 11.565 11.733c.927-1.918 3.45-5.493 5.796-7.256C19.052 3.205 22 2.046 22 5.41c0 .67-.385 5.633-.611 6.438-.787 2.8-3.642 3.514-6.182 3.082 4.44.756 5.57 3.26 3.13 5.764-4.634 4.757-6.66-1.194-7.177-2.72-.095-.279-.139-.41-.16-.299-.021-.111-.065.02-.16.299-.518 1.526-2.544 7.477-7.178 2.72-2.44-2.504-1.31-5.008 3.13-5.764-2.54.432-5.395-.282-6.182-3.082C.385 11.043 0 6.08 0 5.41 0 2.046 2.948 3.205 4.439 4.477z' },
     { name: 'Instagram', color: '#E4405F', limit: 2200, path: 'M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z' },
     { name: 'LinkedIn', color: '#0A66C2', limit: 3000, path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' }
@@ -389,10 +493,23 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
   var $ = function (id) { return document.getElementById(id); };
   var pad = $('pad');
   var fileInput = $('fileInput');
-  var state = { socialOn: false, focused: false };
+  var state = { socialOn: false, focused: false, limit: null, unit: 'words' };
 
   function lsGet(k) { try { return window.localStorage.getItem(LS[k]); } catch (e) { return null; } }
   function lsSet(k, v) { try { if (v == null) window.localStorage.removeItem(LS[k]); else window.localStorage.setItem(LS[k], String(v)); } catch (e) {} }
+
+  // ---- theme: follows the OS by default; the toggle stores a manual override ----
+  var docEl = document.documentElement;
+  var SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+  var MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+  function resolvedDark() { var t = docEl.getAttribute('data-theme'); if (t) return t === 'dark'; return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches); }
+  function syncThemeBtn() {
+    var dark = resolvedDark(), b = document.getElementById('themeBtn');
+    if (b) { b.innerHTML = dark ? SUN : MOON; var lab = dark ? 'Switch to light mode' : 'Switch to dark mode'; b.setAttribute('aria-label', lab); b.title = lab; }
+    var meta = document.querySelector('meta[name=theme-color]'); if (meta) meta.setAttribute('content', dark ? '#0f1318' : '#F4F6FA');
+  }
+  function setTheme(t) { if (t) docEl.setAttribute('data-theme', t); else docEl.removeAttribute('data-theme'); syncThemeBtn(); }
+  function toggleTheme() { var t = resolvedDark() ? 'light' : 'dark'; lsSet('theme', t); setTheme(t); }
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function nf(n) { return Number(n).toLocaleString('en-US'); }
   function fmtTime(mins) {
@@ -454,7 +571,7 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
   function setMsg(text, ok) {
     var msg = $('urlMsg');
     msg.textContent = text;
-    msg.style.color = ok ? '#5A8A5E' : '#C2493B';
+    msg.style.color = ok ? 'var(--ok)' : 'var(--danger)';
     msg.hidden = !text;
     $('urlBox').classList.toggle('err', !!text && !ok);
   }
@@ -503,7 +620,7 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
       if (navigator.clipboard) await navigator.clipboard.writeText(pad.value || '');
       else { pad.select(); document.execCommand('copy'); }
       var lbl = $('copyLabel'); lbl.textContent = 'Copied!';
-      clearTimeout(onCopy._t); onCopy._t = setTimeout(function () { lbl.textContent = 'Copy text'; }, 1600);
+      clearTimeout(onCopy._t); onCopy._t = setTimeout(function () { lbl.textContent = 'Copy'; }, 1600);
     } catch (e) {}
   }
   function onClear() { setText(''); setMsg('', true); pad.focus(); }
@@ -513,8 +630,59 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
     $('socialToggle').setAttribute('aria-checked', state.socialOn ? 'true' : 'false');
     update();
   }
+  function syncUnit() {
+    var bs = document.querySelectorAll('.wc-unit-b');
+    for (var i = 0; i < bs.length; i++) bs[i].setAttribute('aria-pressed', bs[i].getAttribute('data-unit') === state.unit ? 'true' : 'false');
+  }
+  function setUnit(u) { state.unit = u === 'chars' ? 'chars' : 'words'; lsSet('unit', state.unit); syncUnit(); update(); }
+  // Validate the limit: integers ≥ 1 only. Empty = no limit; negatives/zero are
+  // rejected with a message; decimals round (no silent truncation).
+  function parseLimit(raw) {
+    var s = String(raw == null ? '' : raw).trim();
+    if (s === '') return { limit: null, note: '', err: false };
+    var num = Number(s);
+    if (!isFinite(num)) return { limit: null, note: 'Enter a number.', err: true };
+    if (num <= 0) return { limit: null, note: 'Limit must be 1 or more.', err: true };
+    var n = Math.round(num);
+    return { limit: n, note: n !== num ? 'Rounded to ' + nf(n) + '.' : '', err: false };
+  }
+  function setLimitNote(msg, isErr) {
+    var n = $('limitNote');
+    if (!msg) { n.hidden = true; n.textContent = ''; return; }
+    n.textContent = msg; n.className = 'wc-limit-note ' + (isErr ? 'err' : 'info'); n.hidden = false;
+  }
+  function syncLimitClear() { $('limitClear').hidden = $('limitInput').value === ''; }
+  function onLimitInput(e) {
+    var r = parseLimit(e.target.value);
+    state.limit = r.limit; lsSet('limit', state.limit);
+    setLimitNote(r.note, r.err);
+    syncLimitClear();
+    update();
+  }
+  function onLimitBlur(e) {
+    var r = parseLimit(e.target.value);
+    if (r.limit != null) e.target.value = r.limit;          // normalise decimals to the applied integer
+    else if (e.target.value.trim() !== '') e.target.value = ''; // discard an invalid entry
+    state.limit = r.limit; lsSet('limit', state.limit);
+    setLimitNote('', false);
+    syncLimitClear();
+    update();
+  }
+  function clearLimit() {
+    $('limitInput').value = ''; state.limit = null; lsSet('limit', null);
+    setLimitNote('', false); syncLimitClear(); update(); $('limitInput').focus();
+  }
 
   // ---- metrics ----
+  // Heuristic syllable estimate (good enough for a readability index, no dictionary).
+  function syllables(w) {
+    w = w.toLowerCase().replace(/[^a-z]/g, '');
+    if (!w) return 0;
+    if (w.length <= 3) return 1;
+    w = w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '').replace(/^y/, '');
+    var g = w.match(/[aeiouy]{1,2}/g);
+    return g ? g.length : 1;
+  }
   function metrics() {
     var text = pad.value || '';
     var trimmed = text.trim();
@@ -525,18 +693,55 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
     var noSpace = text.replace(/\s/g, '').length;
     var sentences = trimmed === '' ? 0 : (trimmed.match(/[^.!?…]+[.!?…]+/g) || [trimmed]).length;
     var paragraphs = trimmed === '' ? 0 : trimmed.split(/\n{2,}/).map(function (p) { return p.trim(); }).filter(Boolean).length;
-    return { text: text, words: words, chars: chars, noSpace: noSpace, sentences: sentences, paragraphs: paragraphs, readMin: words / WPM, speakMin: words / SPEAK_WPM };
+
+    // Flesch Reading Ease + Flesch–Kincaid grade level (need a little text to be meaningful).
+    var ease = null, grade = null;
+    if (words >= 5 && sentences >= 1) {
+      var syll = 0;
+      for (var i = 0; i < tokens.length; i++) syll += syllables(tokens[i]);
+      var wps = words / sentences, spw = syll / words;
+      ease = Math.max(0, Math.min(100, 206.835 - 1.015 * wps - 84.6 * spw));
+      grade = Math.max(1, 0.39 * wps + 11.8 * spw - 15.59);
+    }
+    return { text: text, words: words, chars: chars, noSpace: noSpace, sentences: sentences, paragraphs: paragraphs, readMin: words / WPM, speakMin: words / SPEAK_WPM, ease: ease, grade: grade };
+  }
+  function easeBand(e) { return e >= 80 ? 'very easy' : e >= 60 ? 'easy' : e >= 50 ? 'fair' : e >= 30 ? 'hard' : 'very hard'; }
+  function gradeBand(g) { return g <= 5 ? 'elementary' : g <= 8 ? 'middle school' : g <= 12 ? 'high school' : g <= 16 ? 'college' : 'postgrad'; }
+
+  // ---- over-limit highlight (a backdrop div mirrors the textarea; the portion
+  // past the limit is wrapped in <mark>). Only runs when set & exceeded. ----
+  function overflowStart(text) {
+    if (state.unit === 'chars') return Math.min(state.limit, text.length);
+    var re = /\S+/g, mt, i = 0;
+    while ((mt = re.exec(text)) !== null) { i++; if (i === state.limit + 1) return mt.index; }
+    return text.length;
+  }
+  function renderHighlight() {
+    var bd = $('backdrop'), text = pad.value || '';
+    var cnt = state.unit === 'chars' ? text.length : (text.trim() === '' ? 0 : text.trim().split(/\s+/).length);
+    if (!(state.limit > 0 && cnt > state.limit)) { if (bd.firstChild) bd.textContent = ''; return; }
+    var s = overflowStart(text);
+    bd.innerHTML = esc(text.slice(0, s)) + '<mark class="wc-hl">' + esc(text.slice(s)) + '</mark>';
+    bd.scrollTop = pad.scrollTop; bd.scrollLeft = pad.scrollLeft;
+  }
+  var _hlT = null;
+  function scheduleHighlight() {
+    if ((pad.value || '').length > 15000) { clearTimeout(_hlT); _hlT = setTimeout(renderHighlight, 120); }
+    else renderHighlight();
   }
 
   function rows(list) {
-    return list.map(function (r) { return '<div class="wc-row"><span class="rl">' + r.l + '</span><span class="rv">' + esc(r.v) + '</span></div>'; }).join('');
+    return list.map(function (r) {
+      var lbl = r.t ? '<span class="rl" title="' + esc(r.t) + '">' + r.l + '</span>' : '<span class="rl">' + r.l + '</span>';
+      return '<div class="wc-row">' + lbl + '<span class="rv">' + esc(r.v) + '</span></div>';
+    }).join('');
   }
   function renderSocial(m) {
     return PLATFORMS.map(function (p) {
       var remaining = p.limit - m.chars, over = remaining < 0;
       var pct = Math.min(100, (m.chars / p.limit) * 100) + '%';
-      var barColor = over ? '#D14343' : p.color;
-      var remColor = over ? '#D14343' : '#8A93A6';
+      var barColor = over ? 'var(--danger)' : p.color;
+      var remColor = over ? 'var(--danger)' : 'var(--faint)';
       var remLabel = over ? '-' + nf(-remaining) : nf(remaining) + ' left';
       return '<div class="wc-srow"><div class="top">'
         + '<span class="nm"><svg width="17" height="17" viewBox="0 0 24 24" style="flex:none"><path fill="' + p.color + '" d="' + p.path + '"></path></svg>'
@@ -549,9 +754,22 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
   function update() {
     var m = metrics();
     var empty = m.text.length === 0;
-    $('metrics').hidden = empty;
+    // Counts and the limit control show from the start (at 0) so the tool's
+    // behaviour is obvious before any text is entered.
+    $('mWords').textContent = nf(m.words);
+    $('mChars').textContent = nf(m.chars);
     $('footActions').hidden = empty;
-    if (!empty) { $('mWords').textContent = nf(m.words); $('mChars').textContent = nf(m.chars); }
+    if (state.limit > 0) {
+      var cnt = state.unit === 'chars' ? m.chars : m.words;
+      var word = state.unit === 'chars' ? 'characters' : 'words';
+      var pct = Math.min(100, cnt / state.limit * 100), over = cnt > state.limit;
+      $('limitFill').style.width = pct + '%';
+      $('limitFill').style.background = over ? 'var(--danger)' : 'var(--accent)';
+      $('limitMeta').textContent = nf(cnt) + ' / ' + nf(state.limit) + ' ' + word + ' · ' + (over ? (nf(cnt - state.limit) + ' over') : (Math.round(pct) + '%'));
+      $('limitMeta').classList.toggle('over', over);
+      $('limitBar').hidden = false;
+    } else { $('limitBar').hidden = true; }
+    scheduleHighlight();
     $('statsEmpty').hidden = !empty;
     $('statsBody').hidden = empty;
     if (!empty) {
@@ -562,7 +780,9 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
       ]);
       $('readingList').innerHTML = rows([
         { l: 'Reading time', v: fmtTime(m.readMin) },
-        { l: 'Speaking time', v: fmtTime(m.speakMin) }
+        { l: 'Speaking time', v: fmtTime(m.speakMin) },
+        { l: 'Reading ease', t: 'Flesch Reading Ease (0–100). Higher is easier: 60–70 is plain English, below 50 is difficult / college-level.', v: m.ease == null ? '—' : Math.round(m.ease) + ' · ' + easeBand(m.ease) },
+        { l: 'Grade level', t: 'Flesch–Kincaid grade level — the US school grade needed to read this. 8 ≈ average adult; 13+ ≈ college.', v: m.grade == null ? '—' : 'Grade ' + Math.round(m.grade) + ' · ' + gradeBand(Math.round(m.grade)) }
       ]);
     }
     if (state.socialOn) {
@@ -576,11 +796,18 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
   }
 
   // restore
+  var th0 = lsGet('theme'); if (th0 === 'dark' || th0 === 'light') setTheme(th0); else syncThemeBtn();
+  if (window.matchMedia) { try { window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change', function () { if (!docEl.getAttribute('data-theme')) syncThemeBtn(); }); } catch (e) {} }
   var t0 = lsGet('text'); if (t0) pad.value = t0;
   var so = lsGet('social'); if (so !== null) state.socialOn = so === '1';
   $('socialToggle').setAttribute('aria-checked', state.socialOn ? 'true' : 'false');
+  var lim = lsGet('limit'); if (lim) { var ln = parseInt(lim, 10); state.limit = isNaN(ln) ? null : ln; }
+  var un = lsGet('unit'); if (un === 'chars' || un === 'words') state.unit = un;
+  $('limitInput').value = state.limit == null ? '' : state.limit;
+  syncUnit(); syncLimitClear();
 
   pad.addEventListener('input', function () { lsSet('text', pad.value); update(); });
+  pad.addEventListener('scroll', function () { var bd = $('backdrop'); bd.scrollTop = pad.scrollTop; bd.scrollLeft = pad.scrollLeft; });
   pad.addEventListener('focus', function () { state.focused = true; update(); });
   pad.addEventListener('blur', function () { state.focused = false; update(); });
   $('emptyState').addEventListener('click', function () { pad.focus(); });
@@ -592,6 +819,11 @@ html,body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-syste
   $('urlForm').addEventListener('submit', onFetchUrl);
   $('urlInput').addEventListener('input', function () { setMsg('', true); });
   $('socialToggle').addEventListener('click', toggleSocial);
+  $('themeBtn').addEventListener('click', toggleTheme);
+  $('limitInput').addEventListener('input', onLimitInput);
+  $('limitInput').addEventListener('blur', onLimitBlur);
+  $('limitClear').addEventListener('click', clearLimit);
+  (function () { var bs = document.querySelectorAll('.wc-unit-b'); for (var i = 0; i < bs.length; i++) (function (b) { b.addEventListener('click', function () { setUnit(b.getAttribute('data-unit')); }); })(bs[i]); })();
 
   update();
 })();
