@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1f2328",
-  "description": "Free online word counter — count words, characters, sentences and paragraphs instantly as you type. Live reading time and keyword density, no sign-up, and your text never leaves your browser.",
+  "description": "A 100% free and private word counter — count words, characters, sentences and paragraphs as you type. No sign-up, no tracking or analytics code, and your text never leaves your browser.",
   "icons": [
     {
       "src": "/favicon.svg",

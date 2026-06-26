@@ -1,6 +1,6 @@
 # Free Word Counter
 
-> Free online word counter — count words, characters, sentences and paragraphs instantly as you type. Live reading time and keyword density, no sign-up, and your text never leaves your browser.
+> A 100% free and private word counter — count words, characters, sentences and paragraphs as you type. No sign-up, no tracking or analytics code, and your text never leaves your browser.
 
 - URL: https://free-word-counter.github.io/
 - Type: free client-side web tool (no sign-up, no upload, works offline)
@@ -15,6 +15,14 @@ Free Word Counter is a fast, private tool that counts the words and characters i
 2. Stay in Writing mode for words, characters, sentences, paragraphs, reading time and pages; switch to Social for per-platform character limits.
 3. Read the big live count and the full stats matrix in the highlighted panel above your text.
 4. Set a target word count to track your progress with a live goal bar as you write.
+
+## 100% private — no tracking, no analytics
+
+This word counter is private by design. There is no tracking code, no analytics, no cookies, and no third-party scripts — nothing about you or your writing is collected or sent anywhere. All counting happens locally in your browser, so the text you type or paste never leaves your device and is never uploaded to a server. That makes it safe for confidential essays, client work, drafts, and anything you would rather not hand to a website.
+
+## 100% free and works offline
+
+Every feature is completely free with no sign-up, no account, and no paywall — paste as much text as you like, as often as you like. Because the whole tool runs in your browser, it also keeps working without an internet connection once the page has loaded: open it on a flight, on patchy mobile data, or anywhere offline, and your live word and character counts keep updating.
 
 ## Character counter
 

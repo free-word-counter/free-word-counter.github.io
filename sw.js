@@ -1,4 +1,4 @@
-const CACHE='free-word-counter-997924ce';
+const CACHE='free-word-counter-ff55d80f';
 const CORE=['./','./index.html','./manifest.json'];
 self.addEventListener('install',function(e){e.waitUntil(caches.open(CACHE).then(function(c){return c.addAll(CORE)}).then(function(){return self.skipWaiting()}))});
 self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(keys){return Promise.all(keys.map(function(k){if(k!==CACHE)return caches.delete(k)}))}).then(function(){return self.clients.claim()}))});
